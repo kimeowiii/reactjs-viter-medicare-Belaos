@@ -20,7 +20,7 @@ const Footer = () => {
                   Providing compassionate healthcare services since 2005.
                 </p>
               </div>
-              <di>
+              <div>
                 <h4 className="text-white font-bold text-xl mb-4">
                   Quick Links
                 </h4>
@@ -68,7 +68,7 @@ const Footer = () => {
                     </li>
                   </ul>
                 </div>
-              </di>
+              </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               <div>

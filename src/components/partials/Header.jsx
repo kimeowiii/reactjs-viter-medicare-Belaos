@@ -1,7 +1,11 @@
 import React from "react";
-import { FaClinicMedical } from "react-icons/fa";
+import { FaClinicMedical, FaTimes } from "react-icons/fa";
 
 const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
   return (
     <>
       {/* navigation */}
@@ -46,8 +50,8 @@ const Header = () => {
                 Pharmacy
               </a>
             </div>
-            <button className="md:hidden text-gray-600">
-              <svg
+            <button onClick={toggleMenu} className="md:hidden text-gray-600">
+              {isMenuOpen ? <FaTimes /> :  <svg
                 className="w-6 h-6"
                 fill="none"
                 stroke="currentColor"
@@ -60,11 +64,59 @@ const Header = () => {
                   strokeWidth={2}
                   d="M4 6h16M4 12h16M4 18h16"
                 />
-              </svg>
+              </svg>}
             </button>
           </div>
         </div>
       </nav>
+
+      {/* Mobile Menu */}
+      <div
+        className={`fixed inset-0 bg-white
+           z-40 flex flex-col items-center justify-center transition-all duration-300 ease-in-out ${
+             isMenuOpen
+               ? "opacity-100 translate-y-0"
+               : "opacity-0 -translate-y-full pointer-events-none"
+           }`}
+      >
+        <div className="flex flex-col items-center space-y-8 text-blue-800 text-2xl">
+          <a
+            href="#home"
+            className="hover:text-blue-200 transition"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Home
+          </a>
+          <a
+            href="#services"
+            className="hover:text-blue-200 transition"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Services
+          </a>
+          <a
+            href="#doctors"
+            className="hover:text-blue-200 transition"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Doctors
+          </a>
+          <a
+            href="#emergency"
+            className="hover:text-blue-200 transition"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Emergency
+          </a>
+          <a
+            href="#pharmacy"
+            className="hover:text-blue-200 transition"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Pharmacy
+          </a>
+        </div>
+      </div>
     </>
   );
 };
